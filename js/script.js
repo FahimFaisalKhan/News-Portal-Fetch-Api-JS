@@ -123,9 +123,9 @@ async function display_all_data_of_cat(cat_id, cat_name) {
     ].checked = true;
 
     detail_element.appendChild(card_div);
-    loader.classList.remove("block");
-    loader.classList.add("hidden");
   });
+  loader.classList.remove("block");
+  loader.classList.add("hidden");
 }
 
 const load_modal_data = async (cat_id, news_id) => {
