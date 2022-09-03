@@ -264,7 +264,7 @@ const create_card_innerhtml = (
 <div class="modal" id="${news_id}_modal">
   <div class="modal-box w-11/12 max-w-5xl">
   <figure><img class="modal-img"></figure>
-    <h3 class="font-bold text-lg modal-title"></h3>
+    <h3 class="font-bold text-2xl mt-10 modal-title"></h3>
     <p class="py-4 modal-detail"></p>
     <div class="stats shadow container  ">
   
@@ -292,14 +292,38 @@ const create_card_innerhtml = (
         </div>
       </div>
     </div>
+    <div class="stat-title">Rating:</div>
     <div class="stat-value modal-rating"></div>
-    <div class="stat-title author"></div>
+    
+    <div class="stat-title">Author: <span class="author"></span>
+    </div>
    
   </div>
   
 </div>
+
+
+<h1 class="text-2xl font-bold text-accent ml-5 mt-10"> Rate This News</h1>
+
+<div class="rating rating-lg rating-half ml-5  ">
+  <input type="checkbox" name="rating-10" class="rating-hidden" />
+  <input type="checkbox" name="rating-10" class="bg-yellow-500 mask mask-star-2 mask-half-1" />
+  <input type="checkbox" name="rating-10" class="bg-yellow-500 mask mask-star-2 mask-half-2 " />
+  <input type="checkbox" name="rating-10" class="bg-yellow-500 mask mask-star-2 mask-half-1"  />
+  <input type="checkbox" name="rating-10" class="bg-yellow-500 mask mask-star-2 mask-half-2" />
+  <input type="checkbox" name="rating-10" class="bg-yellow-500 mask mask-star-2 mask-half-1" />
+  <input type="checkbox" name="rating-10" class="bg-yellow-500 mask mask-star-2 mask-half-2" />
+  <input type="checkbox" name="rating-10" class="bg-yellow-500 mask mask-star-2 mask-half-1" />
+  <input type="checkbox" name="rating-10" class="bg-yellow-500 mask mask-star-2 mask-half-2" />
+  <input type="checkbox" name="rating-10" class="bg-yellow-500 mask mask-star-2 mask-half-1" />
+  <input type="checkbox" name="rating-10" class="bg-yellow-500 mask mask-star-2 mask-half-2" />
+</div>
+
+
+
+
     <div class="modal-action">
-      <label for="${news_id}" class="btn">Yay!</label>
+      <label for="${news_id}" class="btn">Close</label>
       
     </div>
   </div>
