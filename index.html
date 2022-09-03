@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/5186015b12.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body class="bg-slate-100">
+    <header>
+      <section
+        class="container mx-auto navbar bg-base-100 py-8 px-8 border-b-2 border-gray-400 bg-slate-100"
+      >
+        <div class="flex-1">
+          <a
+            class="normal-case text-xl text-white bg-primary px-4 py-2 font-bold rounded-lg mr-2"
+            >News</a
+          >
+          <a class="normal-case text-xl text-primary font-bold">Portal</a>
+        </div>
+        <div class="w-56 justify-between">
+          <a
+            class="text-gray-400 font-semibold text-xl hover:text-primary hover:underline underline-offset-4 decoration-4 cursor-pointer"
+            >News</a
+          >
+
+          <a
+            class="text-gray-400 font-semibold text-xl hover:text-primary hover:underline underline-offset-4 decoration-4 cursor-pointer"
+            >Blog
+          </a>
+
+          <div class="avatar">
+            <div
+              class="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
+            >
+              <img src="https://placeimg.com/192/192/people" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="container mx-auto">
+        <div
+          id="cat-div"
+          class="tabs justify-around items-center px-6 py-5"
+        ></div>
+      </section>
+    </header>
+    <main class="py-5">
+      <section
+        id="detail-count"
+        class="container mx-auto w-full bg-white h-16 rounded-lg text-xl p-4 font-semibold"
+      ></section>
+
+      <section
+        id="detail"
+        class="grid grid-cols-1 gap-4 container mx-auto py-12"
+      ></section>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
