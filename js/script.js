@@ -98,6 +98,13 @@ async function display_all_data_of_cat(cat_id, cat_name) {
       item._id,
       cat_id
     );
+    card_div.classList.add(
+      "card",
+      "card-side",
+      "bg-base-100",
+      "shadow-xl",
+      "p-5"
+    );
     detail_element.appendChild(card_div);
 
     card_div.querySelector(".rating").children[
@@ -106,9 +113,27 @@ async function display_all_data_of_cat(cat_id, cat_name) {
   });
 }
 
-const show_modal = async (cat_id, news_id) => {
-  data = await load_data(cat_id, news_id);
-  console.log(data);
+const load_modal_data = async (cat_id, news_id) => {
+  const res_data = await load_data(cat_id, news_id);
+  const data = res_data.data[0];
+  const requested_modal = document.getElementById(`${news_id}_modal`);
+  requested_modal
+    .querySelector(".modal-img")
+    .setAttribute("src", data.image_url);
+  requested_modal.querySelector(".modal-detail").innerText = data.details;
+  requested_modal.querySelector(".modal-title").innerText = data.title;
+  requested_modal.querySelector(".views").innerText = data.total_view;
+  requested_modal.querySelector(".trending").innerText = data.others_info
+    .is_trending
+    ? "Currently Trending"
+    : "Not Trending";
+  requested_modal.querySelector(".badge").innerText = data.rating.badge;
+
+  requested_modal.querySelector(".author").innerText = data.author.name;
+  requested_modal.querySelector(".modal-rating").innerText = data.rating.number;
+  requested_modal
+    .querySelector(".modal-author-img")
+    .setAttribute("src", data.author.img);
 };
 
 display_catagories();
@@ -125,7 +150,7 @@ const create_card_innerhtml = (
   cat_id
 ) => {
   const inner_html = `
-  <div class="card card-side bg-base-100 shadow-xl p-5">
+  
           <figure >
             <img
               class="rounded-lg w-72"
@@ -225,13 +250,61 @@ const create_card_innerhtml = (
                 />
               </div>
               <div>
-                <a class="btn btn-link text-2xl hover:no-underline" onclick="show_modal(${cat_id},'${news_id}')"
+                <label for="${news_id}" class="btn btn-link text-2xl hover:no-underline" onclick="load_modal_data(${cat_id},'${news_id}')"
                   ><i class="fa-solid fa-arrow-right"></i
-                ></a>
+                ></label>
               </div>
             </div>
           </div>
+          <!-- The button to open modal -->
+
+
+
+<input type="checkbox" id="${news_id}" class="modal-toggle" />
+<div class="modal" id="${news_id}_modal">
+  <div class="modal-box w-11/12 max-w-5xl">
+  <figure><img class="modal-img"></figure>
+    <h3 class="font-bold text-lg modal-title"></h3>
+    <p class="py-4 modal-detail"></p>
+    <div class="stats shadow container  ">
+  
+  <div class="stat">
+    
+    <div class="stat-title">Total Views</div>
+    <div class="stat-value text-primary views"></div>
+   
+  </div>
+  
+  <div class="stat">
+    <div class="stat-figure text-accent">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+    </div>
+    <div class="stat-title trending"></div>
+    <div class="badge badge-accent"></div>
+    
+  </div>
+  
+  <div class="stat">
+    <div class="stat-figure text-secondary">
+      <div class="avatar">
+        <div class="w-16 rounded-full">
+          <img class="modal-author-img" />
         </div>
+      </div>
+    </div>
+    <div class="stat-value modal-rating"></div>
+    <div class="stat-title author"></div>
+   
+  </div>
+  
+</div>
+    <div class="modal-action">
+      <label for="${news_id}" class="btn">Yay!</label>
+      
+    </div>
+  </div>
+</div>
+      
   `;
   return inner_html;
 };
