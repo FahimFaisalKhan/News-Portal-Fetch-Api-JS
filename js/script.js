@@ -62,7 +62,6 @@ async function display_all_data_of_cat(cat_id, cat_name) {
   const data_obj_arr = data.data;
 
   data_obj_arr.sort((x, y) => y.total_view - x.total_view);
-  console.log(cat_name);
 
   if (cat_name != undefined) {
     const count_msg = data_obj_arr.length
@@ -131,6 +130,7 @@ async function display_all_data_of_cat(cat_id, cat_name) {
 const load_modal_data = async (cat_id, news_id) => {
   const res_data = await load_data(cat_id, news_id);
   const data = res_data.data[0];
+  console.log(data);
   const requested_modal = document.getElementById(`${news_id}_modal`);
   requested_modal
     .querySelector(".modal-img")
@@ -149,6 +149,7 @@ const load_modal_data = async (cat_id, news_id) => {
   requested_modal
     .querySelector(".modal-author-img")
     .setAttribute("src", data.author.img);
+  requested_modal.querySelector(".modal-date").innerText = data.published_date;
 };
 
 display_catagories();
@@ -282,7 +283,7 @@ const create_card_innerhtml = (
   <figure><img class="modal-img"></figure>
     <h3 class="font-bold text-2xl mt-10 modal-title"></h3>
     <p class="pt-4 modal-detail"></p>
-    <p class="pb-4"><i class="stat-title">${date}</i></p>
+    <p class="pb-4"><i class="stat-title modal-date"></i></p>
 
     <div class="flex flex-col md:inline-grid stats shadow container">
   
