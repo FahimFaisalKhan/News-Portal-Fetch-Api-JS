@@ -62,13 +62,17 @@ async function display_all_data_of_cat(cat_id, cat_name) {
   const data_obj_arr = data.data;
 
   data_obj_arr.sort((x, y) => y.total_view - x.total_view);
+  console.log(cat_name);
 
-  const count_msg = data_obj_arr.length
-    ? `${data_obj_arr.length} items found for category ${cat_name}`
-    : `No items found for category ${cat_name}`;
+  if (cat_name != undefined) {
+    const count_msg = data_obj_arr.length
+      ? `${data_obj_arr.length} items found for category ${cat_name}`
+      : `No items found for category ${cat_name}`;
 
-  detail_count_element.innerText = count_msg;
-  detail_element.innerHTML = "";
+    detail_count_element.innerText = count_msg;
+    detail_element.innerHTML = "";
+  }
+
   data_obj_arr.forEach((item) => {
     const date = item.author.published_date
       ? new Date(item.author.published_date.split(" ")[0]).toLocaleDateString(
@@ -117,9 +121,10 @@ async function display_all_data_of_cat(cat_id, cat_name) {
     card_div.querySelector(".rating").children[
       Math.round(item.rating.number / 0.5)
     ].checked = true;
+
+    detail_element.appendChild(card_div);
     loader.classList.remove("block");
     loader.classList.add("hidden");
-    detail_element.appendChild(card_div);
   });
 }
 
