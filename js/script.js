@@ -1,13 +1,20 @@
 const cat_div_element = document.getElementById("cat-div");
 const detail_count_element = document.getElementById("detail-count");
 const detail_element = document.getElementById("detail");
-const load_data = async (cat_id) => {
+const load_data = async (cat_id, news_id) => {
   try {
-    const res = cat_id
-      ? await fetch(
-          `https://openapi.programming-hero.com/api/news/category/0${cat_id}`
-        )
-      : await fetch("https://openapi.programming-hero.com/api/news/categories");
+    const res =
+      cat_id && news_id
+        ? await fetch(
+            `https://openapi.programming-hero.com/api/news/${news_id}`
+          )
+        : cat_id
+        ? await fetch(
+            `https://openapi.programming-hero.com/api/news/category/0${cat_id}`
+          )
+        : await fetch(
+            "https://openapi.programming-hero.com/api/news/categories"
+          );
 
     const data = await res.json();
 
@@ -49,7 +56,7 @@ const display_catagories = async () => {
 async function display_all_data_of_cat(cat_id, cat_name) {
   const data = await load_data(cat_id);
   const data_obj_arr = data.data;
-  console.log(data_obj_arr);
+
   const count_msg = data_obj_arr.length
     ? `${data_obj_arr.length} items found for category ${cat_name}`
     : `No items found for category ${cat_name}`;
@@ -87,18 +94,22 @@ async function display_all_data_of_cat(cat_id, cat_name) {
       item.author.img,
       author_name,
       date,
-      view
+      view,
+      item._id,
+      cat_id
     );
     detail_element.appendChild(card_div);
-    console.log(item.rating.number);
-    console.log(item.rating.number / 0.5);
+
     card_div.querySelector(".rating").children[
       Math.round(item.rating.number / 0.5)
     ].checked = true;
   });
-
-  console.log();
 }
+
+const show_modal = async (cat_id, news_id) => {
+  data = await load_data(cat_id, news_id);
+  console.log(data);
+};
 
 display_catagories();
 
@@ -109,7 +120,9 @@ const create_card_innerhtml = (
   author_img,
   author_name,
   date,
-  view
+  view,
+  news_id,
+  cat_id
 ) => {
   const inner_html = `
   <div class="card card-side bg-base-100 shadow-xl p-5">
@@ -212,7 +225,7 @@ const create_card_innerhtml = (
                 />
               </div>
               <div>
-                <a class="btn btn-link text-2xl hover:no-underline"
+                <a class="btn btn-link text-2xl hover:no-underline" onclick="show_modal(${cat_id},'${news_id}')"
                   ><i class="fa-solid fa-arrow-right"></i
                 ></a>
               </div>
