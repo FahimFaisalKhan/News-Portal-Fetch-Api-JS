@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/5186015b12.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section
+      class="container mx-auto glass lg:h-screen mt-10 rounded-lg flex flex-col items-center justify-center text-white gap-y-5"
+    >
+      <div
+        tabindex="0"
+        class="collapse collapse-arrow border border-primary bg-warning rounded-box md:w-8/12"
+      >
+        <div class="collapse-title text-2xl font-medium">
+          Q1. What is the difference between 'var' , 'let' and 'const'?
+        </div>
+        <div class="collapse-content font-semibold">
+          <p class="text-2xl">Ans: Difference between var,let and const:</p>
+          <p
+            class="bg-yellow-200 text-slate-700 rounded-lg p-4 mt-2 text-xl overflow-scroll"
+          >
+            Variables declared with var and const are scoped to the immediate
+            function body. Variables declared with the var keyword are hoisted.
+            Hoisting means that the variable can be accessed in their enclosing
+            scope even before they are declared. Variables declared with the let
+            keyword are block-scoped, which means the variables will have scope
+            to the immediate enclosing block.
+          </p>
+        </div>
+      </div>
+      <div
+        tabindex="0"
+        class="collapse collapse-arrow border border-primary bg-warning rounded-box md:w-8/12"
+      >
+        <div class="collapse-title text-2xl font-medium">
+          Q2. What is the difference between arrow function and normal function?
+        </div>
+        <div class="collapse-content font-semibold">
+          <p class="text-2xl">
+            Ans: Difference between arrow and normal function
+          </p>
+          <p class="bg-yellow-200 text-slate-700 rounded-lg p-4 mt-2 text-xl">
+            Inside an object if we call this method within an arrow function it
+            will give us its corresponding dom element as output where as
+            regular/nprmal function will give current object as output . Normal
+            functions can be called before declaration but arrow functions can
+            not be called before declaration as they are not hoisted.
+          </p>
+        </div>
+      </div>
+      <div
+        tabindex="0"
+        class="collapse collapse-arrow border border-primary bg-warning rounded-box md:w-8/12"
+      >
+        <div class="collapse-title text-2xl font-medium">
+          Q3. What is the difference between map, forEach , filter , find?
+        </div>
+        <div class="collapse-content font-semibold">
+          <p class="text-2xl">
+            Ans: Difference between map, forEach ,filter ,find:
+          </p>
+          <p class="bg-yellow-200 text-slate-700 rounded-lg p-4 mt-2 text-xl">
+            Map forEach,filter,find all of these 4 are array methods . map
+            executes some function on an array by a for loop and returns another
+            another nodified array. forEach does the same thing as map but the
+            difference is it does not return anything , it justs executes the
+            code in the function without any return value. Filter is also an
+            array method which goes through the array with a function by for
+            loop , filter returns all values that satisfies specified
+            condition/conditions. Find does the same thing as filter but it only
+            returns the first value that meets specified condition/conditions.
+          </p>
+        </div>
+      </div>
+      <div
+        tabindex="0"
+        class="collapse collapse-arrow border border-primary bg-warning rounded-box md:w-8/12"
+      >
+        <div class="collapse-title text-2xl font-medium">
+          Q4. Why use template literals'?
+        </div>
+        <div class="collapse-content font-semibold">
+          <p class="text-2xl">Ans: Template literals:</p>
+          <p class="bg-yellow-200 text-slate-700 rounded-lg p-4 mt-2 text-xl">
+            The reason is simple .. Template literals provide an easy way to
+            interpolate variables and expressions into strings. The method is
+            called string interpolation.
+          </p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
