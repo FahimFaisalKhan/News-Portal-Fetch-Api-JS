@@ -127,10 +127,10 @@ async function display_all_data_of_cat(cat_id, cat_name) {
   loader.classList.add("hidden");
 }
 
-const load_modal_data = async (cat_id, news_id) => {
+const load_modal_data = async (cat_id, news_id, date) => {
   const res_data = await load_data(cat_id, news_id);
   const data = res_data.data[0];
-  console.log(data);
+
   const requested_modal = document.getElementById(`${news_id}_modal`);
   requested_modal
     .querySelector(".modal-img")
@@ -149,7 +149,12 @@ const load_modal_data = async (cat_id, news_id) => {
   requested_modal
     .querySelector(".modal-author-img")
     .setAttribute("src", data.author.img);
-  requested_modal.querySelector(".modal-date").innerText = data.published_date;
+
+  requested_modal.querySelector(".modal-date").innerText =
+    data.published_date != undefined
+      ? data.published_date
+      : `${date}
+       Published time not available`;
 };
 
 display_catagories();
@@ -267,7 +272,7 @@ const create_card_innerhtml = (
                 />
               </div>
               <div>
-                <label for="${news_id}" class="btn btn-link text-2xl hover:no-underline" onclick="load_modal_data(${cat_id},'${news_id}')"
+                <label for="${news_id}" class="btn btn-link text-2xl hover:no-underline" onclick="load_modal_data(${cat_id},'${news_id}','${date}')"
                   ><i class="fa-solid fa-arrow-right"></i
                 ></label>
               </div>
