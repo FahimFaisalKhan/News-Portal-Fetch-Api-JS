@@ -54,8 +54,14 @@ const display_catagories = async () => {
 };
 
 async function display_all_data_of_cat(cat_id, cat_name) {
+  const loader = document.getElementById("loader");
+  loader.classList.remove("hidden");
+  loader.classList.add("block");
+
   const data = await load_data(cat_id);
   const data_obj_arr = data.data;
+
+  data_obj_arr.sort((x, y) => y.total_view - x.total_view);
 
   const count_msg = data_obj_arr.length
     ? `${data_obj_arr.length} items found for category ${cat_name}`
@@ -107,11 +113,13 @@ async function display_all_data_of_cat(cat_id, cat_name) {
       "shadow-xl",
       "p-5"
     );
-    detail_element.appendChild(card_div);
 
     card_div.querySelector(".rating").children[
       Math.round(item.rating.number / 0.5)
     ].checked = true;
+    loader.classList.remove("block");
+    loader.classList.add("hidden");
+    detail_element.appendChild(card_div);
   });
 }
 
@@ -139,7 +147,6 @@ const load_modal_data = async (cat_id, news_id) => {
 };
 
 display_catagories();
-display_all_data_of_cat(8);
 
 const create_card_innerhtml = (
   title,
@@ -268,7 +275,9 @@ const create_card_innerhtml = (
   <div class="modal-box w-11/12 max-w-5xl">
   <figure><img class="modal-img"></figure>
     <h3 class="font-bold text-2xl mt-10 modal-title"></h3>
-    <p class="py-4 modal-detail"></p>
+    <p class="pt-4 modal-detail"></p>
+    <p class="pb-4"><i class="stat-title">${date}</i></p>
+
     <div class="flex flex-col md:inline-grid stats shadow container">
   
   <div class="flex flex-col-reverse md:inline-grid stat px-2">
