@@ -100,6 +100,8 @@ async function display_all_data_of_cat(cat_id, cat_name) {
     );
     card_div.classList.add(
       "card",
+      "flex-col",
+      "md:flex-row",
       "card-side",
       "bg-base-100",
       "shadow-xl",
@@ -158,14 +160,14 @@ const create_card_innerhtml = (
               alt="Movie"
             />
           </figure>
-          <div class="card-body px-20 ">
+          <div class="card-body px-2 md:px-20 ">
             <h2 class="card-title text-2xl font-bold mb-2">
               ${title}
             </h2>
             <p class="h-44 text-gray-500 font-base text-xl detail leading-normal text-elipsis overflow-hidden">
               ${detail}
             </p>
-            <div class="card-actions justify-between text-lg items-center mt-4">
+            <div class="flex-col gap-y-4 lg:flex-row card-actions justify-between text-lg items-center mt-4">
               <div class="flex justify-between gap-x-4 font-medium">
                 <div class="avatar">
                   <div class="w-14 rounded-full">
@@ -266,16 +268,16 @@ const create_card_innerhtml = (
   <figure><img class="modal-img"></figure>
     <h3 class="font-bold text-2xl mt-10 modal-title"></h3>
     <p class="py-4 modal-detail"></p>
-    <div class="stats shadow container  ">
+    <div class="flex flex-col md:inline-grid stats shadow container">
   
-  <div class="stat">
+  <div class="flex flex-col-reverse md:inline-grid stat px-2">
     
     <div class="stat-title">Total Views</div>
     <div class="stat-value text-primary views"></div>
    
   </div>
   
-  <div class="stat">
+  <div class="flex flex-col-reverse md:inline-grid stat px-2">
     <div class="stat-figure text-accent">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
     </div>
@@ -284,7 +286,7 @@ const create_card_innerhtml = (
     
   </div>
   
-  <div class="stat">
+  <div class="flex flex-col-reverse md:inline-grid stat px-2">
     <div class="stat-figure text-secondary">
       <div class="avatar">
         <div class="w-16 rounded-full">

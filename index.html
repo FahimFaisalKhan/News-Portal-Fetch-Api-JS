@@ -21,9 +21,9 @@
   <body class="bg-slate-100">
     <header>
       <section
-        class="container mx-auto navbar bg-base-100 py-8 px-8 border-b-2 border-gray-400 bg-slate-100"
+        class="container mx-auto navbar bg-base-100 py-8 px-8 border-b-2 border-gray-400 bg-slate-100 flex-col md:flex-row"
       >
-        <div class="flex-1">
+        <div class="flex-1 mb-8 md:mb-0">
           <a
             class="normal-case text-xl text-white bg-primary px-4 py-2 font-bold rounded-lg mr-2"
             >News</a
@@ -50,17 +50,17 @@
           </div>
         </div>
       </section>
-      <section class="container mx-auto">
+      <section class="container mx-auto mt-6 md:mt-0">
         <div
           id="cat-div"
-          class="tabs justify-around items-center px-6 py-5"
+          class="grid grid-cols-2 md:mx-auto tabs md:justify-around items-center md:py-5 md:flex text-center"
         ></div>
       </section>
     </header>
     <main class="py-5">
       <section
         id="detail-count"
-        class="container mx-auto w-full bg-white h-16 rounded-lg text-xl p-4 font-semibold"
+        class="container mx-auto w-full bg-white md:h-16 rounded-lg text-xl p-4 font-semibold"
       ></section>
 
       <section
