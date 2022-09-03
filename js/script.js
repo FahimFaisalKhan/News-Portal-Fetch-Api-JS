@@ -147,6 +147,7 @@ const load_modal_data = async (cat_id, news_id) => {
 };
 
 display_catagories();
+display_all_data_of_cat(8);
 
 const create_card_innerhtml = (
   title,
